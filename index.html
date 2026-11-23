@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111c">
+  <meta name="description" content="Causivyn — an evidence-first intelligence platform in development. Coming soon.">
+  <title>Causivyn™ | Coming Soon</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg-1: #07111c;
+      --bg-2: #081827;
+      --bg-3: #0b1d2e;
+      --text: #f2efe7;
+      --muted: #b2bcc8;
+      --soft: #8d9baa;
+      --gold: #d7b982;
+      --gold-soft: #f0d7a3;
+      --cyan: #6cd7e8;
+      --cyan-soft: #b8f5ff;
+      --line: rgba(199, 214, 228, 0.18);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { min-height: 100%; }
+    body {
+      margin: 0;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(55% 55% at 74% 50%, rgba(79, 187, 208, 0.11), transparent 72%),
+        radial-gradient(30% 30% at 89% 15%, rgba(218, 184, 124, 0.09), transparent 75%),
+        linear-gradient(120deg, var(--bg-1) 0%, var(--bg-2) 52%, var(--bg-1) 100%);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    .page {
+      position: relative;
+      min-height: 100vh;
+      max-width: 1680px;
+      margin: 0 auto;
+      padding: 42px clamp(28px, 6vw, 78px) 28px;
+      display: flex;
+      flex-direction: column;
+      isolation: isolate;
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(40% 40% at 68% 58%, rgba(224, 191, 126, 0.06), transparent 72%),
+        linear-gradient(90deg, rgba(108, 215, 232, 0.02), transparent 24%, transparent 76%, rgba(108, 215, 232, 0.02));
+      z-index: -2;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      min-height: 34px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #d8dde3;
+      font-size: 0.92rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 14px rgba(215, 185, 130, 0.7);
+      flex: none;
+    }
+
+    .hero {
+      position: relative;
+      flex: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(420px, 0.95fr);
+      align-items: center;
+      gap: 16px;
+      min-height: 700px;
+    }
+
+    .copy {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      padding: 32px 0 72px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 18px;
+      margin: 0 0 28px;
+      color: var(--gold);
+      font-size: 1.03rem;
+      font-weight: 600;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), rgba(215, 185, 130, 0.2));
+      border-radius: 999px;
+      flex: none;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(5.2rem, 10vw, 8.9rem);
+      line-height: 0.9;
+      font-weight: 680;
+      letter-spacing: -0.075em;
+      color: var(--text);
+    }
+
+    h1 .accent { color: var(--gold); }
+
+    h2 {
+      margin: 30px 0 22px;
+      font-size: clamp(2rem, 3vw, 3.35rem);
+      line-height: 1.08;
+      font-weight: 400;
+      letter-spacing: -0.045em;
+      max-width: 700px;
+    }
+
+    .description {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1.15rem, 1.55vw, 1.9rem);
+      line-height: 1.55;
+      max-width: 700px;
+      text-wrap: balance;
+    }
+
+    .marker {
+      display: block;
+      width: 72px;
+      height: 2px;
+      margin-top: 42px;
+      background: linear-gradient(90deg, var(--gold), rgba(215, 185, 130, 0.14));
+      border-radius: 999px;
+    }
+
+    .visual {
+      position: absolute;
+      inset: 0 0 0 33%;
+      z-index: 1;
+      pointer-events: none;
+      overflow: visible;
+    }
+
+    .visual svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      overflow: visible;
+    }
+
+    .divider {
+      position: relative;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(194, 205, 217, 0), rgba(194, 205, 217, 0.25) 10%, rgba(194, 205, 217, 0.25) 90%, rgba(194, 205, 217, 0));
+      margin-top: auto;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      padding-top: 22px;
+      color: var(--soft);
+      font-size: 0.96rem;
+      letter-spacing: 0.02em;
+    }
+
+    .footer-right {
+      text-align: right;
+      color: #c8d0d9;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.78; }
+      50% { opacity: 1; }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .glow-node,
+      .glow-node-soft,
+      .glow-trace {
+        animation: pulseGlow 5.8s ease-in-out infinite;
+      }
+      .glow-node-soft { animation-duration: 7.2s; }
+      .glow-trace { animation-duration: 6.6s; }
+    }
+
+    @media (max-width: 1120px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: 840px;
+        align-items: start;
+      }
+
+      .copy {
+        max-width: 760px;
+        padding: 34px 0 320px;
+      }
+
+      .visual {
+        inset: auto -8% 60px -10%;
+        height: 48%;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        padding: 26px 22px 22px;
+      }
+
+      .topbar {
+        justify-content: flex-start;
+      }
+
+      .status {
+        font-size: 0.76rem;
+        letter-spacing: 0.17em;
+      }
+
+      .hero {
+        min-height: 800px;
+      }
+
+      .copy {
+        padding: 28px 0 300px;
+      }
+
+      .eyebrow {
+        gap: 12px;
+        margin-bottom: 22px;
+        font-size: 0.8rem;
+        letter-spacing: 0.28em;
+      }
+
+      .eyebrow::before {
+        width: 38px;
+      }
+
+      h1 {
+        font-size: clamp(4rem, 17vw, 5.6rem);
+        line-height: 0.93;
+      }
+
+      h2 {
+        margin-top: 22px;
+        font-size: clamp(1.95rem, 7vw, 2.5rem);
+      }
+
+      .description {
+        font-size: 1.04rem;
+        line-height: 1.62;
+      }
+
+      .marker {
+        margin-top: 34px;
+        width: 56px;
+      }
+
+      .visual {
+        inset: auto -20% 44px -34%;
+        height: 42%;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 0.88rem;
+      }
+
+      .footer-right {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="status" aria-label="Project status: in development">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span>In Development</span>
+      </div>
+    </header>
+
+    <main class="hero">
+      <section class="copy" aria-labelledby="site-title">
+        <p class="eyebrow">Coming Soon</p>
+        <h1 id="site-title">Causivyn<span class="accent">.</span></h1>
+        <h2>A clearer way to see what connects.</h2>
+        <p class="description">Causivyn™ is an evidence-first intelligence platform in development, designed to help investigators uncover meaningful connections and understand complex failures.</p>
+        <span class="marker" aria-hidden="true"></span>
+      </section>
+
+      <div class="visual" aria-hidden="true">
+        <svg viewBox="0 0 1100 760" xmlns="http://www.w3.org/2000/svg" role="presentation">
+          <defs>
+            <linearGradient id="mainTrace" x1="0" y1="620" x2="980" y2="90" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#5bdcf0"/>
+              <stop offset="0.46" stop-color="#dffcff"/>
+              <stop offset="0.74" stop-color="#d7b982"/>
+              <stop offset="1" stop-color="#f4d690"/>
+            </linearGradient>
+            <linearGradient id="secondaryTrace" x1="180" y1="560" x2="900" y2="140" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="rgba(91,220,240,0.05)"/>
+              <stop offset="0.2" stop-color="#6fd8ea"/>
+              <stop offset="0.55" stop-color="#aaf7ff"/>
+              <stop offset="1" stop-color="#a1dceb"/>
+            </linearGradient>
+            <radialGradient id="goldBloom" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="rgba(239, 215, 160, 0.34)"/>
+              <stop offset="0.42" stop-color="rgba(229, 199, 134, 0.15)"/>
+              <stop offset="1" stop-color="rgba(229, 199, 134, 0)"/>
+            </radialGradient>
+            <radialGradient id="cyanBloom" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="rgba(124, 236, 255, 0.34)"/>
+              <stop offset="0.46" stop-color="rgba(108, 215, 232, 0.12)"/>
+              <stop offset="1" stop-color="rgba(108, 215, 232, 0)"/>
+            </radialGradient>
+            <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="10" result="blur"/>
+              <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+
+          <g opacity="0.18" stroke="#5d7891" fill="none">
+            <path d="M245 610c120-276 356-470 748-472" stroke-width="1.2"/>
+            <path d="M398 642c76-233 222-364 528-430" stroke-width="0.95"/>
+            <path d="M534 728c52-225 158-372 440-504" stroke-width="0.7"/>
+            <path d="M666 194c140 18 243 68 346 160" stroke-width="0.8" stroke-dasharray="3 10"/>
+            <path d="M520 530c106-32 246-18 376 68" stroke-width="0.8" stroke-dasharray="3 10"/>
+            <path d="M386 658c110-58 258-82 416-28" stroke-width="0.8" stroke-dasharray="3 10"/>
+          </g>
+
+          <g class="glow-trace" opacity="0.55">
+            <ellipse cx="658" cy="378" rx="240" ry="130" fill="url(#goldBloom)"/>
+            <ellipse cx="525" cy="455" rx="250" ry="120" fill="url(#cyanBloom)"/>
+          </g>
+
+          <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M30 675 C145 630, 228 658, 314 646 C410 630, 450 592, 514 546 C575 500, 610 476, 664 390 C717 306, 765 283, 809 250 C865 207, 912 170, 1044 82"
+                  stroke="url(#mainTrace)" stroke-width="4.2" filter="url(#softGlow)"/>
+
+            <path d="M506 546 C470 452, 482 380, 560 308 C602 268, 615 228, 613 160"
+                  stroke="url(#secondaryTrace)" stroke-width="2.15" opacity="0.9"/>
+
+            <path d="M514 546 C576 536, 662 520, 734 522 C810 524, 869 500, 947 410"
+                  stroke="url(#secondaryTrace)" stroke-width="2.05" opacity="0.84"/>
+
+            <path d="M664 390 C643 318, 659 262, 715 206 C760 161, 782 120, 782 58"
+                  stroke="url(#secondaryTrace)" stroke-width="1.9" opacity="0.84"/>
+
+            <path d="M809 250 C870 272, 946 298, 1036 300"
+                  stroke="url(#secondaryTrace)" stroke-width="1.95" opacity="0.72"/>
+
+            <path d="M314 646 C326 556, 292 486, 220 438"
+                  stroke="url(#secondaryTrace)" stroke-width="1.75" opacity="0.72"/>
+
+            <path d="M734 522 C760 585, 818 636, 909 664"
+                  stroke="url(#secondaryTrace)" stroke-width="1.75" opacity="0.72"/>
+          </g>
+
+          <g fill="none" stroke="#86cddd" stroke-opacity="0.28" stroke-width="1.2" stroke-dasharray="4 10">
+            <path d="M214 476 L314 646 L514 546 L664 390 L809 250 L1036 300"/>
+            <path d="M560 308 L613 160"/>
+            <path d="M734 522 L909 664"/>
+          </g>
+
+          <g>
+            <circle cx="1044" cy="82" r="54" fill="none" stroke="#e9c98a" stroke-opacity="0.22" stroke-width="1.2"/>
+            <circle cx="1044" cy="82" r="26" fill="none" stroke="#f2d99f" stroke-opacity="0.33" stroke-width="1.3"/>
+          </g>
+
+          <g>
+            <circle class="glow-node" cx="1044" cy="82" r="13.5" fill="#f0d18c" filter="url(#softGlow)"/>
+            <circle class="glow-node-soft" cx="809" cy="250" r="8.3" fill="#6cd7e8" filter="url(#softGlow)"/>
+            <circle class="glow-node-soft" cx="734" cy="522" r="9" fill="#63d7e8" filter="url(#softGlow)"/>
+            <circle class="glow-node-soft" cx="514" cy="546" r="10" fill="#63d7e8" filter="url(#softGlow)"/>
+            <circle class="glow-node" cx="664" cy="390" r="9.3" fill="#e8c57f" filter="url(#softGlow)"/>
+            <circle class="glow-node-soft" cx="560" cy="308" r="6.6" fill="#6ed9ea" filter="url(#softGlow)"/>
+            <circle cx="30" cy="675" r="8" fill="none" stroke="#79ddee" stroke-width="2.4"/>
+            <circle cx="1036" cy="300" r="6.2" fill="#e9cc8c"/>
+            <circle cx="909" cy="664" r="5.6" fill="none" stroke="#b2cddb" stroke-width="2"/>
+            <circle cx="782" cy="58" r="4.8" fill="none" stroke="#b2cddb" stroke-width="2"/>
+            <circle cx="613" cy="160" r="4.4" fill="none" stroke="#b2cddb" stroke-width="1.8"/>
+            <circle cx="220" cy="438" r="4.5" fill="none" stroke="#b2cddb" stroke-width="1.8"/>
+            <circle cx="214" cy="476" r="4.5" fill="none" stroke="#b2cddb" stroke-width="1.8"/>
+            <circle cx="314" cy="646" r="4.9" fill="none" stroke="#b2cddb" stroke-width="1.8"/>
+            <circle cx="947" cy="410" r="4.6" fill="none" stroke="#b2cddb" stroke-width="1.8"/>
+          </g>
+        </svg>
+      </div>
+    </main>
+
+    <div class="divider" aria-hidden="true"></div>
+    <footer>
+      <span>© 2026 Causivyn™. All rights reserved.</span>
+      <span class="footer-right">Independent development · Updates to follow</span>
+    </footer>
+  </div>
+</body>
+</html>
