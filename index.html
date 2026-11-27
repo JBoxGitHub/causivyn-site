@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#07111c">
-  <meta name="description" content="Causivyn — an evidence-first intelligence platform in development. Coming soon.">
-  <title>Causivyn™ | Coming Soon</title>
+  <meta name="description" content="Causivyn is developing an evidence-first investigation platform to help investigators examine recurring failures, explore connections and challenge explanations.">
+  <title>Causivyn™ | Evidence Before Certainty</title>
   <style>
     :root {
       color-scheme: dark;
@@ -213,21 +213,6 @@
       border: 0;
     }
 
-    @keyframes pulseGlow {
-      0%, 100% { opacity: 0.78; }
-      50% { opacity: 1; }
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-      .glow-node,
-      .glow-node-soft,
-      .glow-trace {
-        animation: pulseGlow 5.8s ease-in-out infinite;
-      }
-      .glow-node-soft { animation-duration: 7.2s; }
-      .glow-trace { animation-duration: 6.6s; }
-    }
-
     @media (max-width: 1120px) {
       .hero {
         grid-template-columns: 1fr;
@@ -314,7 +299,26 @@
         text-align: left;
       }
     }
-  </style>
+  
+    .eyebrow{white-space:normal;letter-spacing:.22em}
+    .hero{overflow:hidden}.copy{max-width:690px}
+    .description{font-size:clamp(1.05rem,1.5vw,1.35rem);max-width:610px}
+    .approach-link{display:inline-flex;align-items:center;gap:24px;margin-top:28px;padding:13px 20px;border:1px solid rgba(215,185,130,.5);border-radius:6px;color:var(--gold-soft);text-decoration:none;font-size:.92rem}
+    .approach-link:hover{background:rgba(215,185,130,.09)}
+    a:focus-visible{outline:2px solid var(--cyan);outline-offset:5px}
+    .development-note{font-size:.74rem;line-height:1.6;color:var(--soft);margin:18px 0 0;max-width:450px}
+    .approach{position:relative;z-index:2;padding:44px 0 56px;scroll-margin-top:24px}
+    .section-kicker{color:var(--gold);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase}
+    .approach h2{font-size:clamp(1.8rem,3vw,2.7rem);max-width:800px;margin:14px 0}
+    .approach-intro{color:var(--muted);font-size:1rem;line-height:1.7;max-width:740px;margin-bottom:26px}
+    .pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .pillar{background:rgba(12,28,43,.65);border:1px solid var(--line);border-radius:10px;padding:26px;min-width:0}
+    .pillar small{color:var(--gold);font-size:.7rem;letter-spacing:.14em}
+    .pillar h3{font-size:1.12rem;font-weight:500;margin:17px 0 12px}
+    .pillar p{color:var(--muted);font-size:.9rem;line-height:1.75;margin:0}
+    .principle{font-size:.87rem;color:var(--muted);border-left:2px solid var(--gold);padding:10px 0 10px 18px;margin:28px 0 0;line-height:1.7;max-width:870px}
+    @media(max-width:760px){.pillars{grid-template-columns:1fr}.approach{padding-top:30px}.copy{padding-bottom:320px}.hero{min-height:930px}.eyebrow{font-size:.7rem;letter-spacing:.16em}.visual{bottom:26px;height:37%}.development-note{font-size:.7rem}.pillar{padding:22px}.approach-link{font-size:.85rem}}
+</style>
 </head>
 <body>
   <div class="page">
@@ -327,10 +331,10 @@
 
     <main class="hero">
       <section class="copy" aria-labelledby="site-title">
-        <p class="eyebrow">Coming Soon</p>
+        <p class="eyebrow">Evidence-first intelligence</p>
         <h1 id="site-title">Causivyn<span class="accent">.</span></h1>
-        <h2>A clearer way to see what connects.</h2>
-        <p class="description">Causivyn™ is an evidence-first intelligence platform in development, designed to help investigators uncover meaningful connections and understand complex failures.</p>
+        <h2>Follow the evidence.<br>See what connects.</h2>
+        <p class="description">Investigations rarely arrive as a complete picture. Causivyn™ is being developed to help investigators organize evidence, explore connections across recurring failures, and challenge competing explanations.</p><a class="approach-link" href="#approach">Explore the approach <span aria-hidden="true">↓</span></a><p class="development-note">Research prototype · Synthetic demonstrations · Independent validation pending</p>
         <span class="marker" aria-hidden="true"></span>
       </section>
 
@@ -437,7 +441,7 @@
       </div>
     </main>
 
-    <div class="divider" aria-hidden="true"></div>
+    <section class="approach" id="approach" aria-labelledby="approach-title"><span class="section-kicker">The approach</span><h2 id="approach-title">A connection is a starting point.<br>Evidence determines what follows.</h2><p class="approach-intro">Our development focus is a clearer investigation workspace for quality, reliability and failure-analysis professionals—built around three principles.</p><div class="pillars"><article class="pillar"><small>01 / PRESERVE</small><h3>Keep evidence in context.</h3><p>Retain the source, its limitations and the distinction between an observation and an interpretation.</p></article><article class="pillar"><small>02 / CONNECT</small><h3>Explore relationships.</h3><p>Examine shared components, suppliers, processes and conditions while keeping unrelated explanations open.</p></article><article class="pillar"><small>03 / CHALLENGE</small><h3>Ask what could disprove it.</h3><p>Make uncertainty, contradictions and missing evidence visible before reaching a conclusion.</p></article></div><p class="principle">Evidence before certainty. Causivyn is in development. Demonstrations use synthetic cases; production readiness and real-world investigative performance have not been established.</p></section><div class="divider" aria-hidden="true"></div>
     <footer>
       <span>© 2026 Causivyn™. All rights reserved.</span>
       <span class="footer-right">Independent development · Updates to follow</span>
